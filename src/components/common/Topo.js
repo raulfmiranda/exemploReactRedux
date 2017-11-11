@@ -8,6 +8,7 @@ const Topo = () => {
         <a id="logo-container" href="#" className="brand-logo">React Taskboard</a>
         <ul className="right">
           <li><Link to='/'>Taskboard</Link></li>
+          <li><Link to='/devs'>Devs</Link></li>
           <li><Link to='/about'>Sobre</Link></li>
         </ul>
       </div>

@@ -6,23 +6,20 @@ import {bindActionCreators} from 'redux';
 class DevsPage extends Component {
   constructor() {
     super();
-    this.state = {
-      dev: { nome: ''}
-    }
+    // this.state = {
+    //   dev: { nome: ''}
+    // }
   }
 
-  onClickSave() {
-    this.props.actions.createDev(this.state.dev);
-    // this.props.createDev(this.state.dev);
-    // this.props.dispatch(devActions.createDev(this.state.dev));
-    // alert('Salvando ${this.state.dev.nome}');
-  }
+  // onClickSave() {
+  //   this.props.actions.createDev(this.state.dev);
+  // }
 
-  onNameChange(event) {
-    const dev = this.state.dev;
-    dev.nome = event.target.value;
-    this.setState({dev: dev});
-  }
+  // onNameChange(event) {
+  //   const dev = this.state.dev;
+  //   dev.nome = event.target.value;
+  //   this.setState({dev: dev});
+  // }
 
   devRow(dev, index) {
     return <div key={index}>{dev.nome}</div>;
@@ -33,8 +30,8 @@ class DevsPage extends Component {
       <div className="container">
         <h1>Desenvolvedores</h1>
         {this.props.devs.map(this.devRow)}
-        <input type="text" onChange={this.onNameChange.bind(this)} value={this.state.dev.nome}/>
-        <input type="submit" onClick={this.onClickSave.bind(this)} value="Salvar"/>
+        {/* <input type="text" onChange={this.onNameChange.bind(this)} value={this.state.dev.nome}/> */}
+        {/* <input type="submit" onClick={this.onClickSave.bind(this)} value="Salvar"/> */}
       </div>
     );
   }
