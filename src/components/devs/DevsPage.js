@@ -1,6 +1,7 @@
-import React, {Component, PropTypes } from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import * as devActions from '../../actions/devActions'
+import * as devActions from '../../actions/devActions';
+import {bindActionCreators} from 'redux';
 
 class DevsPage extends Component {
   constructor() {
@@ -11,7 +12,9 @@ class DevsPage extends Component {
   }
 
   onClickSave() {
-    this.props.dispatch(devActions.createDev(this.state.dev));
+    this.props.actions.createDev(this.state.dev);
+    // this.props.createDev(this.state.dev);
+    // this.props.dispatch(devActions.createDev(this.state.dev));
     // alert('Salvando ${this.state.dev.nome}');
   }
 
@@ -43,4 +46,11 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-export default connect(mapStateToProps)(DevsPage);
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(devActions, dispatch)
+    // createDev: dev => dispatch(devActions.createDev(dev))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DevsPage);
