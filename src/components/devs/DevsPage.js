@@ -29,6 +29,7 @@ class DevsPage extends Component {
     return(
       <div className="container">
         <h1>Desenvolvedores</h1>
+        {this.props.devs.map(this.devRow)}
         <input type="text" onChange={this.onNameChange.bind(this)} value={this.state.dev.nome}/>
         <input type="submit" onClick={this.onClickSave.bind(this)} value="Salvar"/>
       </div>
