@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import * as devActions from '../../actions/devActions'
 
 class DevsPage extends Component {
   constructor() {
@@ -9,13 +11,18 @@ class DevsPage extends Component {
   }
 
   onClickSave() {
-    alert('Salvando ${this.state.dev.nome}');
+    this.props.dispatch(devActions.createDev(this.state.dev));
+    // alert('Salvando ${this.state.dev.nome}');
   }
 
   onNameChange(event) {
     const dev = this.state.dev;
     dev.nome = event.target.value;
     this.setState({dev: dev});
+  }
+
+  devRow(dev, index) {
+    return <div key={index}>{dev.nome}</div>;
   }
 
   render() {
@@ -29,4 +36,10 @@ class DevsPage extends Component {
   }
 }
 
-export default DevsPage;
+function mapStateToProps(state, ownProps) {
+  return {
+    devs: state.devs
+  };
+}
+
+export default connect(mapStateToProps)(DevsPage);
